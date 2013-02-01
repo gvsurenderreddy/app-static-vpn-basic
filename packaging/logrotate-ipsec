@@ -1,0 +1,10 @@
+# rotate the IPsec / pluto log
+/var/log/ipsec {
+#   size 10k
+    notifempty
+    missingok
+    weekly
+    copytruncate
+    create 0664 root root
+    rotate 4
+}

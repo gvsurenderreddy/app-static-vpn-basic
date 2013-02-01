@@ -1,0 +1,44 @@
+#!/bin/sh
+
+
+# Add to sudoers for ipsec (required for ipsec auto --status)
+#-------------------------------
+/usr/sbin/addsudo /usr/sbin/ipsec "IPSec"
+
+# Patch ipsec.conf to enable configlet directory /etc/ispec.d/
+#--------------------------------
+/bin/sed -i -e "/#include \/etc\/ipsec.d\/\*.conf/ c\include \/etc\/ipsec.d\/\*.conf" /etc/ipsec.conf
+
+# Drop in configlet and restart sys logger
+#--------------------------------
+/sbin/service rsyslog restart
+/usr/bin/logger -p local6.notice -t installer "IPsec log is now at /var/log/ipsec"
+
+# Add to automatic start list
+#----------------------------
+logger -p local6.notice -t installer "app-static-vpn-core - enabling ipsec server"
+chkconfig ipsec on
+
+# Patch ipsec.conf to enable defaultroute if not specified
+# Testing confirms not required
+#--------------------------------
+
+#CHECK=`grep 'interfaces=' /etc/ipsec.conf`
+#if [ -z "$CHECK" ]; then
+#    logger -p local6.notice -t installer "app-static-vpn-core - adding defaultroute to interfaces setting to /etc/ipsec.conf"
+#    /bin/sed -i -e '/\tprotostack/ i\\tinterfaces=%defaultroute' /etc/ipsec.conf
+#fi
+
+# Patch ipsec.conf to enable virtual_private
+#--------------------------------
+
+CHECK=`grep 'virtual_private=%v4' /etc/ipsec.conf`
+# assume something specified so leave as is
+if [ -z "$CHECK" ]; then
+    logger -p local6.notice -t installer "app-static-vpn-core - adding virtual private subnets to /etc/ipsec.conf"
+    /bin/sed -i -e '/\tvirtual_private=/ c\\tvirtual_private=%v4:10.0.0.0\/8,%v4:192.168.0.0\/16,%v4:172.16.0.0\/12' /etc/ipsec.conf
+fi
+
+# Restart
+#--------
+/sbin/service ipsec condrestart
