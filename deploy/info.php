@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'static_vpn_basic';
-$app['version'] = '1.3.5';
+$app['version'] = '1.3.6';
 $app['release'] = '1';
 $app['vendor'] = 'Tim Burgess';
 $app['packager'] = 'Tim Burgess';
@@ -34,9 +34,8 @@ $app['controllers']['static_vpn']['title'] = lang('static_vpn_basic_app_name');
 
 $app['core_requires'] = array(
     'app-network',
-    'openswan',
-    //'app-ipsec-core',
-    //'app-static-vpn-core'
+    '/usr/sbin/ipsec',
+    //'app-ipsec-core'
 );
 
 $app['core_file_manifest'] = array(
