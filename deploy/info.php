@@ -34,21 +34,16 @@ $app['controllers']['static_vpn']['title'] = lang('static_vpn_basic_app_name');
 
 $app['core_requires'] = array(
     'app-network',
-    '/usr/sbin/ipsec',
-    //'app-ipsec-core'
+    'app-ipsec-core'
 );
 
 $app['core_file_manifest'] = array(
-    'ipsec.php' => array('target' => '/var/clearos/base/daemon/ipsec.php'),
-    'logrotate-ipsec' => array(
-        'target' => '/etc/logrotate.d/ipsec',
-        'mode' => '0644',
-        'config' => FALSE
-    ),
-    'rsyslog-ipsec.conf' => array(
-        'target' => '/etc/rsyslog.d/ipsec.conf',
-        'mode' => '0644',
-        'config' => FALSE
-    ),
+    'logrotate-ipsec' => array('target' => '/etc/logrotate.d/ipsec'),
+    'rsyslog-ipsec.conf' => array('target' => '/etc/rsyslog.d/ipsec.conf'),
 );
 
+$app['delete_dependency'] = array(
+    'app-static-vpn-basic',
+    'app-static-vpn-basic-core',
+    'openswan'
+);

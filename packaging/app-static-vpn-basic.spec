@@ -1,7 +1,7 @@
 
 Name: app-static-vpn-basic
 Epoch: 1
-Version: 1.3.4
+Version: 1.3.6
 Release: 1%{dist}
 Summary: **static_vpn_basic_app_name**
 License: GPLv3
@@ -22,8 +22,7 @@ License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network
-Requires: openswan
-Requires: app-static-vpn-core
+Requires: app-ipsec-core
 
 %description core
 **static_vpn_basic_app_description**
@@ -38,7 +37,6 @@ This package provides the core API and libraries.
 mkdir -p -m 755 %{buildroot}/usr/clearos/apps/static_vpn_basic
 cp -r * %{buildroot}/usr/clearos/apps/static_vpn_basic/
 
-install -D -m 0644 packaging/ipsec.php %{buildroot}/var/clearos/base/daemon/ipsec.php
 install -D -m 0644 packaging/logrotate-ipsec %{buildroot}/etc/logrotate.d/ipsec
 install -D -m 0644 packaging/rsyslog-ipsec.conf %{buildroot}/etc/rsyslog.d/ipsec.conf
 
@@ -88,6 +86,5 @@ exit 0
 /usr/clearos/apps/static_vpn_basic/deploy
 /usr/clearos/apps/static_vpn_basic/language
 /usr/clearos/apps/static_vpn_basic/libraries
-/var/clearos/base/daemon/ipsec.php
-%config /etc/logrotate.d/ipsec
-%config /etc/rsyslog.d/ipsec.conf
+/etc/logrotate.d/ipsec
+/etc/rsyslog.d/ipsec.conf
