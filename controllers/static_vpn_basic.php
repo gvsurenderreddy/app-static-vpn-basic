@@ -261,6 +261,8 @@ class Static_Vpn_Basic extends ClearOS_Controller
                 $data['rightsubnet'] = $this->input->post('rightsubnet');
 
                 $data['psk'] = $this->input->post('psk');
+                $data['leftpskid'] = $data['left'];
+                $data['rightpskid'] = $data['right'];
 
                 //finally pass tunnel name
                 $name = $data['name'];

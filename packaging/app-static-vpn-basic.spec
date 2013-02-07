@@ -1,7 +1,7 @@
 
 Name: app-static-vpn-basic
 Epoch: 1
-Version: 1.3.6
+Version: 1.3.7
 Release: 1%{dist}
 Summary: **static_vpn_basic_app_name**
 License: GPLv3

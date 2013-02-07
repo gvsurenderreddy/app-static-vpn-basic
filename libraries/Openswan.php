@@ -315,6 +315,83 @@ class Openswan extends Daemon
         
     }
 
+    /**
+     * Reload tunnel configuration based on auto config
+     *
+     * @param string $name tunnel name
+     * @param boolean $manual bring up manual connection defaults true
+     *
+     * @return none
+     * @throws Engine_Exception
+     */
+
+    public function reload($name, $manual = TRUE)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        $data = $this->get_config($name);
+        if ($data['auto'] == 'add'){
+            $reload = TRUE;
+            $bringup = FALSE;
+        }
+        if ($data['auto'] == 'start'){
+            $reload = TRUE;
+            $bringup = FALSE;
+        }
+        if ($data['auto'] == 'ignore'){
+            $reload = FALSE;
+            $bringup = FALSE;
+        }
+        if ($manual) {
+            $reload = TRUE;
+            $bringup = TRUE;
+            if ($data['auto'] == 'add')
+                $bringup = FALSE;
+            if ($data['right'] == '%any')
+                $bringup = FALSE;
+        }
+        //full reload is rereadsecrets, replace, up
+        try {
+            $options = array();
+            $options['env'] = 'LANG=en_US';
+
+            $shell = new Shell();
+
+            //reload secrets first for all conns
+            $argssecret = 'auto --rereadsecrets';
+            $shell->Execute(
+                self::CMD_IPSEC, $argssecret, TRUE, $options
+            );
+
+            if ($reload) {
+                //replace -will tear down tunnel and delete first, and then add to pluto
+                $argsdown = 'auto --replace ' . $name;
+                $shell->Execute(
+                    self::CMD_IPSEC, $argsdown, TRUE, $options
+                );
+            } else {
+                //delete only for auto ignore setting
+                $argsdown = 'auto --delete ' . $name;
+                $shell->Execute(
+                    self::CMD_IPSEC, $argsdown, TRUE, $options
+                );
+            }
+
+            //bring up the tunnel again only for automatic connections
+            if ($bringup) {
+                $argsup = 'auto --up ' . $name;
+                $options['validate_exit_code'] = FALSE;
+                $options['background'] = TRUE;
+                $shell->Execute(
+                    self::CMD_IPSEC, $argsup, TRUE, $options
+                );
+            }
+        } catch (Engine_Exception $e) {
+            throw new Engine_Exception($e);
+        }
+
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////////
     // V A L I D A T I O N   M E T H O D S
