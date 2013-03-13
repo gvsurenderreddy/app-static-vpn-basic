@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'static_vpn_basic';
-$app['version'] = '1.3.7';
+$app['version'] = '1.3.8';
 $app['release'] = '1';
 $app['vendor'] = 'Tim Burgess';
 $app['packager'] = 'Tim Burgess';

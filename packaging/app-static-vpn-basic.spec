@@ -1,9 +1,9 @@
 
 Name: app-static-vpn-basic
 Epoch: 1
-Version: 1.3.7
+Version: 1.3.8
 Release: 1%{dist}
-Summary: **static_vpn_basic_app_name**
+Summary: Static IPsec VPN Basic
 License: GPLv3
 Group: ClearOS/Apps
 Packager: Tim Burgess
@@ -14,10 +14,10 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-**static_vpn_basic_app_description**
+IPsec VPN allows users to establish secure encrypted connections between networks using Openswan. The basic IPsec VPN app supports IPsec or IKE and connections in host-to-host or site-to-site configurations between ClearOS (Openswan) gateways. This app implements pre-shared key authentication for unmanaged static connections only.
 
 %package core
-Summary: **static_vpn_basic_app_name** - Core
+Summary: Static IPsec VPN Basic - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
@@ -25,7 +25,7 @@ Requires: app-network
 Requires: app-ipsec-core
 
 %description core
-**static_vpn_basic_app_description**
+IPsec VPN allows users to establish secure encrypted connections between networks using Openswan. The basic IPsec VPN app supports IPsec or IKE and connections in host-to-host or site-to-site configurations between ClearOS (Openswan) gateways. This app implements pre-shared key authentication for unmanaged static connections only.
 
 This package provides the core API and libraries.
 
