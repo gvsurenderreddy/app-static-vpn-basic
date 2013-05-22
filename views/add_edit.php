@@ -3,9 +3,9 @@
 /**
  * IPsec add or edit settings view.
  *
- * @category   ClearOS
- * @package    Static_Vpn_Basic
- * @subpackage File
+ * @category   apps
+ * @package    static-vpn-basic
+ * @subpackage views
  * @author     Tim Burgess <trburgess@gmail.com>
  * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

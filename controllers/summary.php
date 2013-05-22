@@ -2,9 +2,9 @@
 /**
  * Static VPN Summary
  *
- * @category   Apps
- * @package    Static_Vpn_Basic
- * @subpackage Controllers
+ * @category   apps
+ * @package    static-vpn-basic
+ * @subpackage controllers
  * @author     Tim Burgess <trburgess@gmail.com>
  * @copyright  2011-2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -41,9 +41,9 @@ use \Exception as Exception;
 /**
  * Basic Static VPN Summary Controller.
  *
- * @category   Apps
- * @package    Static_Vpn_Basic
- * @subpackage Controllers
+ * @category   apps
+ * @package    static-vpn-basic
+ * @subpackage controllers
  * @author     Tim Burgess <trburgess@gmail.com>
  * @copyright  2011-2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

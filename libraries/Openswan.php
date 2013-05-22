@@ -3,9 +3,9 @@
 /**
  * Openswan class.
  *
- * @category   Apps
- * @package    Static_VPN_Basic
- * @subpackage Libraries
+ * @category   apps
+ * @package    static-vpn-basic
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
@@ -89,9 +89,9 @@ clearos_load_library('base/Engine_Exception');
 /**
  * Openswan class.
  *
- * @category   Apps
- * @package    Static_VPN_Basic
- * @subpackage Libraries
+ * @category   apps
+ * @package    static-vpn-basic
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2012 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later

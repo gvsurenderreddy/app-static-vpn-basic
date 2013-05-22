@@ -3,9 +3,9 @@
 /**
  * IPsec Basic Server summary view.
  *
- * @category   ClearOS
- * @package    Static_VPN_Basic
- * @subpackage Views
+ * @category   apps
+ * @package    static-vpn-basic
+ * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
